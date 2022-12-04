@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IP Adress</title>
+</head>
+<body>
+  <section>
+    <div class="container">
+      <h1>USER INFORMATION</h1>
+      <ul>
+        <li>
+          IP:
+          <span id="ip"></span>
+        </li>
+
+        <li>
+          Country:
+          <span id="country"></span>
+        </li>
+        
+        <li>
+          City:
+          <span id="city"></span>
+        </li>
+
+        <li>
+          ISP:
+          <span id="isp"></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    const ip = document.getElementById('ip')
+    const country = document.getElementById('country')
+    const city = document.getElementById('city')
+    const isp = document.getElementById('isp')
+
+
+    fetch('http://ip-api.com/json/?fields=61439')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        ip.textContent = data.query;
+        country.textContent = data.country;
+        city.textContent = data.city;
+        isp.textContent = data.isp;
+      })
+      .catch(err => console.error(err))
+
+			
+	</script>
+</body>
+</html>
